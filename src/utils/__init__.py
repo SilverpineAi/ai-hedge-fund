@@ -1,3 +1,9 @@
-# This file can be empty
+"""
+Utilities Package
 
-"""Utility modules for the application."""
+Common utilities for the influencer discovery app.
+"""
+
+from .logger import setup_logger
+
+__all__ = ["setup_logger"]

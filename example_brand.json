@@ -1,0 +1,27 @@
+{
+  "name": "FitTech Pro",
+  "industry": "Fitness Technology",
+  "description": "Smart fitness equipment and mobile apps that help people achieve their health goals through technology and data-driven insights.",
+  "target_categories": ["fitness", "tech", "lifestyle", "health"],
+  "min_followers": 10000,
+  "max_followers": 500000,
+  "min_engagement_rate": 2.0,
+  "target_demographics": {
+    "age_range": "25-45",
+    "gender": "mixed",
+    "location": "global",
+    "interests": ["fitness", "technology", "health", "wellness", "gadgets"]
+  },
+  "budget_range": {
+    "min": 500,
+    "max": 5000
+  },
+  "brand_values": [
+    "innovation",
+    "health",
+    "quality",
+    "sustainability",
+    "empowerment",
+    "authenticity"
+  ]
+}

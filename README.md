@@ -1,270 +1,239 @@
-# AI Hedge Fund
+# Influencer Discovery App
 
-This is a proof of concept for an AI-powered hedge fund.  The goal of this project is to explore the use of AI to make trading decisions.  This project is for **educational** purposes only and is not intended for real trading or investment.
+An AI-powered influencer discovery platform that scrapes social media sites to find the perfect influencers for online brands. This application uses advanced AI agents to analyze social media profiles, engagement rates, audience demographics, and content quality to match brands with relevant influencers.
 
-This system employs several agents working together:
+## 🚀 Features
 
-1. Aswath Damodaran Agent - The Dean of Valuation, focuses on story, numbers, and disciplined valuation
-2. Ben Graham Agent - The godfather of value investing, only buys hidden gems with a margin of safety
-3. Bill Ackman Agent - An activist investor, takes bold positions and pushes for change
-4. Cathie Wood Agent - The queen of growth investing, believes in the power of innovation and disruption
-5. Charlie Munger Agent - Warren Buffett's partner, only buys wonderful businesses at fair prices
-6. Michael Burry Agent - The Big Short contrarian who hunts for deep value
-7. Peter Lynch Agent - Practical investor who seeks "ten-baggers" in everyday businesses
-8. Phil Fisher Agent - Meticulous growth investor who uses deep "scuttlebutt" research 
-9. Rakesh Jhunjhunwala Agent - The Big Bull of India
-10. Stanley Druckenmiller Agent - Macro legend who hunts for asymmetric opportunities with growth potential
-11. Warren Buffett Agent - The oracle of Omaha, seeks wonderful companies at a fair price
-12. Valuation Agent - Calculates the intrinsic value of a stock and generates trading signals
-13. Sentiment Agent - Analyzes market sentiment and generates trading signals
-14. Fundamentals Agent - Analyzes fundamental data and generates trading signals
-15. Technicals Agent - Analyzes technical indicators and generates trading signals
-16. Risk Manager - Calculates risk metrics and sets position limits
-17. Portfolio Manager - Makes final trading decisions and generates orders
-    
-<img width="1042" alt="Screenshot 2025-03-22 at 6 19 07 PM" src="https://github.com/user-attachments/assets/cbae3dcf-b571-490d-b0ad-3f0f035ac0d4" />
+- **Multi-Platform Scraping**: Scrapes Instagram, Twitter/X, TikTok, and YouTube
+- **AI-Powered Analysis**: Uses multiple AI agents to analyze influencer profiles and content
+- **Smart Matching**: Matches brands with influencers based on audience, engagement, and niche
+- **Real-time Analytics**: Provides comprehensive analytics and metrics
+- **Modern Web Interface**: Beautiful React-based dashboard
+- **Automated Discovery**: Scheduled scraping and discovery processes
+- **Engagement Analysis**: Deep analysis of likes, comments, shares, and audience interaction
+- **Content Quality Assessment**: AI evaluation of content quality and brand alignment
 
+## 🤖 AI Agents
 
-**Note**: the system simulates trading decisions, it does not actually trade.
+The system employs several specialized AI agents:
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/virattt?style=social)](https://twitter.com/virattt)
+1. **Profile Analyzer Agent** - Analyzes influencer profiles and bio information
+2. **Content Quality Agent** - Evaluates content quality, aesthetics, and brand alignment
+3. **Engagement Analyst Agent** - Analyzes engagement patterns and authenticity
+4. **Audience Demographics Agent** - Analyzes follower demographics and interests
+5. **Brand Matching Agent** - Matches influencers with suitable brands
+6. **Trend Analysis Agent** - Identifies trending topics and hashtags
+7. **Authenticity Checker Agent** - Detects fake followers and engagement
+8. **ROI Predictor Agent** - Predicts campaign performance and ROI
 
-## Disclaimer
+## 📊 Supported Platforms
 
-This project is for **educational and research purposes only**.
+- **Instagram**: Profile scraping, post analysis, story metrics, reel performance
+- **Twitter/X**: Tweet analysis, engagement metrics, follower analysis
+- **TikTok**: Video performance, trending content, audience demographics
+- **YouTube**: Channel analytics, video performance, subscriber analysis
 
-- Not intended for real trading or investment
-- No investment advice or guarantees provided
-- Creator assumes no liability for financial losses
-- Consult a financial advisor for investment decisions
-- Past performance does not indicate future results
+## 🛠️ Technology Stack
 
-By using this software, you agree to use it solely for learning purposes.
+- **Backend**: FastAPI, SQLAlchemy, PostgreSQL, Redis
+- **AI/ML**: LangChain, OpenAI GPT-4, Anthropic Claude, Local LLMs
+- **Web Scraping**: Selenium, BeautifulSoup, Social Media APIs
+- **Frontend**: React, TypeScript, Tailwind CSS
+- **Data Processing**: Pandas, NumPy, OpenCV, Pillow
+- **Deployment**: Docker, Docker Compose
 
-## Table of Contents
-- [Setup](#setup)
-  - [Using Poetry](#using-poetry)
-  - [Using Docker](#using-docker)
-- [Usage](#usage)
-  - [Running the Hedge Fund](#running-the-hedge-fund)
-  - [Running the Backtester](#running-the-backtester)
-- [Contributing](#contributing)
-- [Feature Requests](#feature-requests)
-- [License](#license)
+## 📋 Prerequisites
 
-## Setup
+- Python 3.11+
+- Docker (optional)
+- Social Media API Keys (optional for enhanced features)
+- OpenAI/Anthropic API Keys for AI analysis
+
+## 🚀 Quick Start
 
 ### Using Poetry
 
-Clone the repository:
+1. Clone the repository:
 ```bash
-git clone https://github.com/virattt/ai-hedge-fund.git
-cd ai-hedge-fund
+git clone <repository-url>
+cd influencer-discovery-app
 ```
 
-1. Install Poetry (if not already installed):
+2. Install Poetry (if not already installed):
 ```bash
 curl -sSL https://install.python-poetry.org | python3 -
 ```
 
-2. Install dependencies:
+3. Install dependencies:
 ```bash
 poetry install
 ```
 
-3. Set up your environment variables:
+4. Set up environment variables:
 ```bash
-# Create .env file for your API keys
 cp .env.example .env
+# Edit .env with your API keys
 ```
 
-4. Set your API keys:
+5. Run the application:
 ```bash
-# For running LLMs hosted by openai (gpt-4o, gpt-4o-mini, etc.)
-# Get your OpenAI API key from https://platform.openai.com/
-OPENAI_API_KEY=your-openai-api-key
+# Start the backend API
+poetry run uvicorn app.backend.main:app --reload
 
-# For running LLMs hosted by groq (deepseek, llama3, etc.)
-# Get your Groq API key from https://groq.com/
-GROQ_API_KEY=your-groq-api-key
-
-# For getting financial data to power the hedge fund
-# Get your Financial Datasets API key from https://financialdatasets.ai/
-FINANCIAL_DATASETS_API_KEY=your-financial-datasets-api-key
+# In another terminal, start the frontend
+cd app/frontend
+npm install
+npm start
 ```
 
 ### Using Docker
 
-1. Make sure you have Docker installed on your system. If not, you can download it from [Docker's official website](https://www.docker.com/get-started).
-
-2. Clone the repository:
+1. Clone and setup:
 ```bash
-git clone https://github.com/virattt/ai-hedge-fund.git
-cd ai-hedge-fund
-```
-
-3. Set up your environment variables:
-```bash
-# Create .env file for your API keys
+git clone <repository-url>
+cd influencer-discovery-app
 cp .env.example .env
+# Edit .env with your API keys
 ```
 
-4. Edit the .env file to add your API keys as described above.
-
-5. Navigate to the docker directory:
+2. Build and run:
 ```bash
-cd docker
+docker-compose up --build
 ```
 
-6. Build the Docker image:
-```bash
-# On Linux/Mac:
-./run.sh build
+The application will be available at:
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+- API Documentation: http://localhost:8000/docs
 
-# On Windows:
-run.bat build
-```
+## 🔑 Environment Variables
 
-**Important**: You must set `OPENAI_API_KEY`, `GROQ_API_KEY`, `ANTHROPIC_API_KEY`, or `DEEPSEEK_API_KEY` for the hedge fund to work.  If you want to use LLMs from all providers, you will need to set all API keys.
-
-Financial data for AAPL, GOOGL, MSFT, NVDA, and TSLA is free and does not require an API key.
-
-For any other ticker, you will need to set the `FINANCIAL_DATASETS_API_KEY` in the .env file.
-
-## Usage
-
-### Running the Hedge Fund
-
-#### With Poetry
-```bash
-poetry run python src/main.py --ticker AAPL,MSFT,NVDA
-```
-
-#### With Docker
-**Note**: All Docker commands must be run from the `docker/` directory.
+Create a `.env` file with the following variables:
 
 ```bash
-# Navigate to the docker directory first
-cd docker
+# AI API Keys
+OPENAI_API_KEY=your-openai-api-key
+ANTHROPIC_API_KEY=your-anthropic-api-key
+GROQ_API_KEY=your-groq-api-key
 
-# On Linux/Mac:
-./run.sh --ticker AAPL,MSFT,NVDA main
+# Social Media API Keys (optional)
+TWITTER_BEARER_TOKEN=your-twitter-bearer-token
+INSTAGRAM_ACCESS_TOKEN=your-instagram-access-token
+YOUTUBE_API_KEY=your-youtube-api-key
+TIKTOK_ACCESS_TOKEN=your-tiktok-access-token
 
-# On Windows:
-run.bat --ticker AAPL,MSFT,NVDA main
+# Database
+DATABASE_URL=postgresql://user:password@localhost:5432/influencer_db
+REDIS_URL=redis://localhost:6379
+
+# App Configuration
+SECRET_KEY=your-secret-key
+DEBUG=True
 ```
 
-**Example Output:**
-<img width="992" alt="Screenshot 2025-01-06 at 5 50 17 PM" src="https://github.com/user-attachments/assets/e8ca04bf-9989-4a7d-a8b4-34e04666663b" />
+## 📖 Usage
 
-You can also specify a `--ollama` flag to run the AI hedge fund using local LLMs.
+### Web Interface
+
+1. **Dashboard**: Overview of discovered influencers and analytics
+2. **Search**: Search for influencers by niche, location, follower count
+3. **Brand Matching**: Input brand details to find matching influencers
+4. **Analytics**: Detailed analytics and performance metrics
+5. **Campaigns**: Manage influencer marketing campaigns
+
+### API Endpoints
+
+- `GET /api/influencers` - List discovered influencers
+- `POST /api/influencers/search` - Search influencers with filters
+- `POST /api/brands/{brand_id}/match` - Find matching influencers for a brand
+- `GET /api/analytics/{influencer_id}` - Get influencer analytics
+- `POST /api/scrape/platform/{platform}` - Trigger scraping for a platform
+
+### Command Line
 
 ```bash
-# With Poetry:
-poetry run python src/main.py --ticker AAPL,MSFT,NVDA --ollama
+# Discover influencers on Instagram
+poetry run python src/main.py --platform instagram --niche fitness --min-followers 10000
 
-# With Docker (from docker/ directory):
-# On Linux/Mac:
-./run.sh --ticker AAPL,MSFT,NVDA --ollama main
+# Analyze specific influencer
+poetry run python src/analyze.py --username @influencer_handle --platform instagram
 
-# On Windows:
-run.bat --ticker AAPL,MSFT,NVDA --ollama main
+# Run brand matching
+poetry run python src/match.py --brand "fitness apparel" --budget 5000
 ```
 
-You can also specify a `--show-reasoning` flag to print the reasoning of each agent to the console.
+## 🔧 Configuration
 
-```bash
-# With Poetry:
-poetry run python src/main.py --ticker AAPL,MSFT,NVDA --show-reasoning
+### Scraping Settings
 
-# With Docker (from docker/ directory):
-# On Linux/Mac:
-./run.sh --ticker AAPL,MSFT,NVDA --show-reasoning main
+Configure scraping parameters in `config/scraping.yaml`:
 
-# On Windows:
-run.bat --ticker AAPL,MSFT,NVDA --show-reasoning main
+```yaml
+instagram:
+  rate_limit: 1  # requests per second
+  max_profiles: 1000
+  min_followers: 1000
+  
+twitter:
+  rate_limit: 2
+  max_tweets: 500
+  
+tiktok:
+  rate_limit: 1
+  max_videos: 200
 ```
 
-You can optionally specify the start and end dates to make decisions for a specific time period.
+### AI Agent Settings
 
-```bash
-# With Poetry:
-poetry run python src/main.py --ticker AAPL,MSFT,NVDA --start-date 2024-01-01 --end-date 2024-03-01 
+Configure AI agents in `config/agents.yaml`:
 
-# With Docker (from docker/ directory):
-# On Linux/Mac:
-./run.sh --ticker AAPL,MSFT,NVDA --start-date 2024-01-01 --end-date 2024-03-01 main
-
-# On Windows:
-run.bat --ticker AAPL,MSFT,NVDA --start-date 2024-01-01 --end-date 2024-03-01 main
+```yaml
+profile_analyzer:
+  model: "gpt-4"
+  temperature: 0.3
+  
+content_quality:
+  model: "claude-3-sonnet"
+  temperature: 0.2
 ```
 
-### Running the Backtester
+## 📊 Analytics & Metrics
 
-#### With Poetry
-```bash
-poetry run python src/backtester.py --ticker AAPL,MSFT,NVDA
-```
+The app provides comprehensive analytics:
 
-#### With Docker
-**Note**: All Docker commands must be run from the `docker/` directory.
+- **Engagement Rate**: Likes, comments, shares per post
+- **Audience Quality**: Follower authenticity and demographics  
+- **Content Performance**: Best performing content types
+- **Growth Trends**: Follower growth over time
+- **Brand Alignment**: How well content aligns with brand values
+- **ROI Predictions**: Expected campaign performance
 
-```bash
-# Navigate to the docker directory first
-cd docker
-
-# On Linux/Mac:
-./run.sh --ticker AAPL,MSFT,NVDA backtest
-
-# On Windows:
-run.bat --ticker AAPL,MSFT,NVDA backtest
-```
-
-**Example Output:**
-<img width="941" alt="Screenshot 2025-01-06 at 5 47 52 PM" src="https://github.com/user-attachments/assets/00e794ea-8628-44e6-9a84-8f8a31ad3b47" />
-
-
-You can optionally specify the start and end dates to backtest over a specific time period.
-
-```bash
-# With Poetry:
-poetry run python src/backtester.py --ticker AAPL,MSFT,NVDA --start-date 2024-01-01 --end-date 2024-03-01
-
-# With Docker (from docker/ directory):
-# On Linux/Mac:
-./run.sh --ticker AAPL,MSFT,NVDA --start-date 2024-01-01 --end-date 2024-03-01 backtest
-
-# On Windows:
-run.bat --ticker AAPL,MSFT,NVDA --start-date 2024-01-01 --end-date 2024-03-01 backtest
-```
-
-You can also specify a `--ollama` flag to run the backtester using local LLMs.
-```bash
-# With Poetry:
-poetry run python src/backtester.py --ticker AAPL,MSFT,NVDA --ollama
-
-# With Docker (from docker/ directory):
-# On Linux/Mac:
-./run.sh --ticker AAPL,MSFT,NVDA --ollama backtest
-
-# On Windows:
-run.bat --ticker AAPL,MSFT,NVDA --ollama backtest
-```
-
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-**Important**: Please keep your pull requests small and focused.  This will make it easier to review and merge.
+## ⚠️ Legal & Ethical Considerations
 
-## Feature Requests
+- **Respect Platform Terms**: Ensure compliance with social media platform terms of service
+- **Rate Limiting**: Implement proper rate limiting to avoid being blocked
+- **Data Privacy**: Handle user data responsibly and in compliance with privacy laws
+- **Ethical Scraping**: Only scrape publicly available information
+- **API Usage**: Prefer official APIs when available
 
-If you have a feature request, please open an [issue](https://github.com/virattt/ai-hedge-fund/issues) and make sure it is tagged with `enhancement`.
+## 📄 License
 
-## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 🙏 Acknowledgments
+
+- Built with modern AI and web scraping technologies
+- Inspired by the need for better influencer-brand matching
+- Thanks to the open-source community for the amazing tools
+
+## 📞 Support
+
+For support, email support@example.com or open an issue on GitHub.

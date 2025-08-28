@@ -1,18 +1,46 @@
-import { useState } from 'react';
-import { Flow } from './components/flow';
-import { Layout } from './components/layout';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ThemeProvider } from './providers/ThemeProvider';
+import { Layout } from './components/layout/Layout';
+import { Dashboard } from './pages/Dashboard';
+import { Projects } from './pages/Projects';
+import { ProjectDetail } from './pages/ProjectDetail';
+import { Contacts } from './pages/Contacts';
+import { Companies } from './pages/Companies';
+import { Signals } from './pages/Signals';
+import { Tasks } from './pages/Tasks';
+import { Upload } from './pages/Upload';
 
+// Create a client
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 export default function App() {
-  const [showLeftSidebar] = useState(false);
-  const [showRightSidebar] = useState(false);
-
   return (
-    <Layout
-      leftSidebar={showLeftSidebar ? <div className="p-4 text-white">Left Sidebar Content</div> : undefined}
-      rightSidebar={showRightSidebar ? <div className="p-4 text-white">Right Sidebar Content</div> : undefined}
-    >
-      <Flow />
-    </Layout>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider defaultTheme="light" storageKey="sales-intelligence-theme">
+        <Router>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Navigate to="/dashboard" replace />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/:projectId" element={<ProjectDetail />} />
+              <Route path="/contacts" element={<Contacts />} />
+              <Route path="/companies" element={<Companies />} />
+              <Route path="/signals" element={<Signals />} />
+              <Route path="/tasks" element={<Tasks />} />
+              <Route path="/upload" element={<Upload />} />
+            </Routes>
+          </Layout>
+        </Router>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
